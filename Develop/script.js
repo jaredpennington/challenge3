@@ -1,15 +1,15 @@
 var passwordLength;
 var passwordString = "";
-var passwordCharacters = "";
+var passwordCharacters;
 
 var random = function (number) {
   return Math.floor(Math.random() * number);
 };
 
 function getPassword() {
-  var passwordLength = prompt("Choose between 8 and 128 characters");
+  passwordLength = prompt("Choose between 8 and 128 characters");
 
-  if (passwordLength < 8 || passwordLength > 128) {
+  if (passwordLength < 8 || passwordLength > 128 || isNaN(passwordLength)) {
     window.alert("you need to provide a valid answer! Please try again.");
     console.log("No answer was given.");
   } else {
@@ -47,24 +47,27 @@ function getSpecial() {
     passwordCharacters =
       passwordCharacters + " !\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~";
   }
-  getPasswordThing()
+  PasswordThing();
 }
 
 function generatePassword() {
+  passwordString = ""
   getPassword();
+  return passwordString;
+
 }
 
 function PasswordThing() {
-  if (password.length == 0) {
+  if (!passwordCharacters) {
+    window.alert("You have to say Yes to one question!")
     getLowerCase();
   } else {
     var passwordArray = passwordCharacters.split("");
     while (passwordString.length < passwordLength) {
       var number = random(passwordArray.length);
       passwordString = passwordString + passwordArray[number];
+      console.log(passwordString);
     }
-    console.log(passwordString)
-    return passwordString;
   }
 }
 
