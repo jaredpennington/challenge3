@@ -7,7 +7,7 @@ var random = function (number) {
 };
 
 function getPassword() {
-  passwordLength = prompt("Choose between 8 and 128 characters");
+  passwordLength = prompt("Choose a number between 8 and 128 characters.");
 
   if (passwordLength < 8 || passwordLength > 128 || isNaN(passwordLength)) {
     window.alert("you need to provide a valid answer! Please try again.");
